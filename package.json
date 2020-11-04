@@ -1,0 +1,23 @@
+{
+  "name": "dodgeball_stanley_musial",
+  "version": "1.0.0",
+  "description": "1. Pick players",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StanleyMMusial/dodgeball_Stanley_Musial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StanleyMMusial/dodgeball_Stanley_Musial/issues"
+  },
+  "homepage": "https://github.com/StanleyMMusial/dodgeball_Stanley_Musial#readme"
+}
