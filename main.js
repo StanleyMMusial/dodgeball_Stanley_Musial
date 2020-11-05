@@ -159,11 +159,11 @@ const arrOfPeople = [
 
     arrOfPeople.splice(personIndex, 1)
 
-    //listPeopleChoices()
+    listPeopleChoices()
 
     console.log(listOfPlayers)
 
-    //createTeamButtons()
+    createTeamButtons()
   }
 
   const blueButton = (id) => {
@@ -178,9 +178,9 @@ const arrOfPeople = [
 
     listOfPlayers.splice(playerIndex, 1)
 
-    //playerInBlueTeam()
+    playerInBlueTeam()
 
-    //createTeamButtons()
+    createTeamButtons()
   }
 
   const redButton = (id) => {
@@ -195,9 +195,9 @@ const arrOfPeople = [
 
     listOfPlayers.splice(playerIndex, 1)
 
-    //playerInRedTeam()
+    playerInRedTeam()
 
-    //createTeamButtons()
+    createTeamButtons()
   }
 
 module.exports = {
