@@ -62,20 +62,21 @@ const arrOfPeople = [
   // Assing classes to each player to fir them into the array //
 
   class Player {
-    constructor(person){
-        this.canDodgeBall = true
-        this.canThrowBall = true
-        this.hasPaid = true
-        this.isHealthy = true
-        this.yearsExperience = 0
+    constructor(person, canThrowBall = true, canDodgeBall = true, hasPaid = true, isHealthy = true, yearsExperience = 0){
+        this.canDodgeBall = canDodgeBall
+        this.canThrowBall = canThrowBall
+        this.hasPaid = hasPaid
+        this.isHealthy = isHealthy
+        this.yearsExperience = yearsExperience
         this.name = person.name
         this.skillSet = person.skillSet
+        this.id = person.id
     }
   }
   class blueTeammate extends Player {
     constructor(player){
       super(player)
-      this.macot = 'Hawks'
+      this.mascot = 'Hawks'
       this.teamColor = 'Blue'
     }
   }
@@ -111,18 +112,41 @@ const arrOfPeople = [
       li.appendChild(document.createTextNode(player.name + " - " + player.skillSet))
       buttonRed.innerHTML = "Red Team"
       buttonBlue.innerHTML = "Blue Team"
-      buttonRed.addEventListener('click', function() {createTeamButtons(player.id)} )
-      buttonBlue.addEventListener('click', function() {createTeamButtons(player.id)} )
+      buttonRed.addEventListener('click', function() {redButton(player.id)} )
+      buttonBlue.addEventListener('click', function() {blueButton(player.id)} )
       li.appendChild(buttonRed)
       li.appendChild(buttonBlue)
       console.log(player)
       playerElement.append(li)
     })
   }
-  
+
+  const playerInRedTeam = () => {
+    const redElement = document.getElementById('red')
+    redElement.innerHTML = ''
+    redTeam.map(person => {
+      const li = document.createElement("li")
+      li.appendChild(document.createTextNode(person.name + " - " + person.skillSet))
+      redElement.append(li)
+    })
+  }
+
+  const playerInBlueTeam = () => {
+    const blueElement = document.getElementById('blue')
+    blueElement.innerHTML = ''
+    blueTeam.map(person => {
+      const li = document.createElement("li")
+      li.appendChild(document.createTextNode(person.name + " - " + person.skillSet))
+      blueElement.append(li)
+    })
+  }
+
+
+ 
+
   const makePlayer = (id) => {
-    console.log(`li ${id} was clicked!`)
     const matchesId = (element) => element.id === id
+    console.log(`li ${id} was clicked!`)
 
     let personIndex = arrOfPeople.findIndex(matchesId)
 
@@ -135,16 +159,51 @@ const arrOfPeople = [
 
     arrOfPeople.splice(personIndex, 1)
 
-    listPeopleChoices()
+    //listPeopleChoices()
 
     console.log(listOfPlayers)
 
-    createTeamButtons()
+    //createTeamButtons()
+  }
+
+  const blueButton = (id) => {
+    const matchesId = (element) => element.id === id
+    let playerIndex = listOfPlayers.findIndex(matchesId)
+
+    let player = listOfPlayers[playerIndex]
+
+    const bluePlayer = new blueTeammate(player)
+
+    blueTeam.push(bluePlayer)
+
+    listOfPlayers.splice(playerIndex, 1)
+
+    //playerInBlueTeam()
+
+    //createTeamButtons()
+  }
+
+  const redButton = (id) => {
+    const matchesId = (element) => element.id === id
+    let playerIndex = listOfPlayers.findIndex(matchesId)
+
+    let player = listOfPlayers[playerIndex]
+
+    const redPlayer = new redTeammate(player)
+
+    redTeam.push(redPlayer)
+
+    listOfPlayers.splice(playerIndex, 1)
+
+    //playerInRedTeam()
+
+    //createTeamButtons()
   }
 
 module.exports = {
   Player : Player,
   makePlayer : makePlayer,
   arrOfPeople : arrOfPeople,
-  listOfPlayers : listOfPlayers
+  listOfPlayers : listOfPlayers,
+  blueTeammate : blueTeammate,
 }
